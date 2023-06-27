@@ -1,6 +1,6 @@
 import React from "react";
 
-const secondNavBar = () => {
+const SecondNavBar = () => {
   return (
     <nav className="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
       <a
@@ -65,4 +65,4 @@ const secondNavBar = () => {
   );
 };
 
-export default secondNavBar;
+export default SecondNavBar;

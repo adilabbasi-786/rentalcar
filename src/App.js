@@ -1,24 +1,13 @@
-import logo from "./logo.svg";
 import "./App.css";
+import TopNavBar from "./components/TopNavBar/TopNavBar";
+import SecondNavBar from "./components/secondNavBar/SecondNavBar";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Rental Car web app
-        </a>
-      </header>
-    </div>
+    <>
+      <TopNavBar />
+      <SecondNavBar />
+    </>
   );
 }
 
