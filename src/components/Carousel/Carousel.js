@@ -1,89 +1,84 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import img1 from "../../img/carousel-bg-1.jpg";
 import img2 from "../../img/carousel-1.png";
 import img3 from "../../img/carousel-bg-2.jpg";
 import img4 from "../../img/carousel-2.png";
 
 const Carousel = () => {
+  const [data, setData] = useState([]);
+  useEffect(()=>{
+    const getData=async()=>{
+      let request = await fetch("http://localhost:1337/api/crousels?populate=background,frontEnd");
+      let res = await request.json();
+     setData(res.data)
+      
+    }
+    getData()
+  },[])
+  const[activeIndex, setActiveIndex]=useState(0)
   return (
     <>
-      <div class="container-fluid p-0 mb-5">
+      <div className="container-fluid p-0 mb-5">
         <div
           id="header-carousel"
-          class="carousel slide"
+          className="carousel slide"
           data-bs-ride="carousel"
         >
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img class="w-100" src={img1} alt="Image" />
-              <div class="carousel-caption d-flex align-items-center">
-                <div class="container">
-                  <div class="row align-items-center justify-content-center justify-content-lg-start">
-                    <div class="col-10 col-lg-7 text-center text-lg-start">
-                      <h6 class="text-white text-uppercase mb-3 animated slideInDown">
-                        // Car Servicing //
-                      </h6>
-                      <h1 class="display-3 text-white mb-4 pb-3 animated slideInDown">
-                        Qualified Car Repair Service Center
-                      </h1>
-                      <a
-                        href=""
-                        class="btn btn-primary py-3 px-5 animated slideInDown"
-                      >
-                        Learn More<i class="fa fa-arrow-right ms-3"></i>
-                      </a>
-                    </div>
-                    <div class="col-lg-5 d-none d-lg-flex animated zoomIn">
-                      <img class="img-fluid" src={img2} alt="" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <img class="w-100" src={img3} alt="Image" />
-              <div class="carousel-caption d-flex align-items-center">
-                <div class="container">
-                  <div class="row align-items-center justify-content-center justify-content-lg-start">
-                    <div class="col-10 col-lg-7 text-center text-lg-start">
-                      <h6 class="text-white text-uppercase mb-3 animated slideInDown">
-                        // Car Servicing //
-                      </h6>
-                      <h1 class="display-3 text-white mb-4 pb-3 animated slideInDown">
-                        Qualified Car Wash Service Center
-                      </h1>
-                      <a
-                        href=""
-                        class="btn btn-primary py-3 px-5 animated slideInDown"
-                      >
-                        Learn More<i class="fa fa-arrow-right ms-3"></i>
-                      </a>
-                    </div>
-                    <div class="col-lg-5 d-none d-lg-flex animated zoomIn">
-                      <img class="img-fluid" src={img4} alt="" />
+          <div className="carousel-inner">
+            {data.map((item, i) => (
+              <div className={`carousel-item ${i === activeIndex ? "active" : ""}`} key={item.id}>
+                <img className="w-100"  src={`http://localhost:1337${item?.attributes?.background?.data?.attributes?.url}`} alt="Image" />
+                <div className="carousel-caption d-flex align-items-center">
+                  <div className="container">
+                    <div className="row align-items-center justify-content-center justify-content-lg-start">
+                      <div className="col-10 col-lg-7 text-center text-lg-start">
+                        <h6 className="text-white text-uppercase mb-3 animated slideInDown">
+                          {item.attributes.title}
+                        </h6>
+                        <h1 className="display-3 text-white mb-4 pb-3 animated slideInDown">
+                          {item.attributes.heading}
+                        </h1>
+                        <a
+                          target="_blank"
+                          href={item.attributes.URL}
+                          className="btn btn-primary py-3 px-5 animated slideInDown"
+                        >
+                          Learn More<i className="fa fa-arrow-right ms-3"></i>
+                        </a>
+                      </div>
+                      <div className="col-lg-5 d-none d-lg-flex animated zoomIn">
+                        <img className="img-fluid" src={`http://localhost:1337${item?.attributes?.frontEnd?.data?.attributes?.url}`} alt="" />
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+            ))}
+            
           </div>
-          <button
-            class="carousel-control-prev"
+          <button onClick={()=>(setActiveIndex(activeIndex===0?data.length-1: activeIndex-1))}
+            className="carousel-control-prev"
             type="button"
             data-bs-target="#header-carousel"
             data-bs-slide="prev"
           >
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
+            <span
+              className="carousel-control-prev-icon"
+              aria-hidden="true"
+            ></span>
+            <span className="visually-hidden">Previous</span>
           </button>
-          <button
-            class="carousel-control-next"
+          <button onClick={()=>setActiveIndex(activeIndex>=data.length-1?0: activeIndex+1)}
+            className="carousel-control-next"
             type="button"
             data-bs-target="#header-carousel"
             data-bs-slide="next"
           >
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
+            <span
+              className="carousel-control-next-icon"
+              aria-hidden="true"
+            ></span>
+            <span className="visually-hidden">Next</span>
           </button>
         </div>
       </div>
