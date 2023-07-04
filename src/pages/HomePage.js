@@ -7,6 +7,7 @@ import OurServices from '../components/OurServices/OurServices'
 import Booking from '../components/Booking/Booking'
 import Teams from '../components/Teams/Teams'
 import Clients from '../components/Clients/Clients'
+import Footer from '../components/Footer/Footer'
 
 const HomePage = () => {
   return (
@@ -19,6 +20,7 @@ const HomePage = () => {
      <Booking/>
      <Teams/>
      <Clients/>
+     <Footer/>
     </>
   )
 }
