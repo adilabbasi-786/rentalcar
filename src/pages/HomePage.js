@@ -13,10 +13,10 @@ const HomePage = () => {
   return (
     <>
      <Carousel/>
-     {/* <Service/> 
+     <Service/> 
      <About/>
      <FactCounter/>
-     <OurServices/>
+     {/* <OurServices/>
      <Booking/>
      <Teams/>
      <Clients/>
