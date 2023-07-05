@@ -50,16 +50,16 @@ const FactCounter = () => {
      ])
   return (
     <>
-      <div class="container-fluid fact bg-dark my-5 py-5">
-        <div class="container">
-            <div class="row g-4">
+      <div className="container-fluid fact bg-dark my-5 py-5">
+        <div className="container">
+            <div className="row g-4">
                 {
                     data.map((item)=>(
 
-                <div class="col-md-6 col-lg-3 text-center wow fadeIn" data-wow-delay="0.1s">
-                    <i class={`fa ${item.attributes.icon} fa-2x text-white mb-3`}></i>
-                    <h2 class="text-white mb-2" data-toggle="counter-up">{item?.attributes?.counter}</h2>
-                    <p class="text-white mb-0">{item?.attributes?.title}</p>
+                <div className="col-md-6 col-lg-3 text-center wow fadeIn" data-wow-delay="0.1s" key={item.id}>
+                    <i className={`fa ${item.attributes.icon} fa-2x text-white mb-3`}></i>
+                    <h2 className="text-white mb-2" data-toggle="counter-up">{item?.attributes?.counter}</h2>
+                    <p className="text-white mb-0">{item?.attributes?.title}</p>
                 </div>
                     ))
                 }
