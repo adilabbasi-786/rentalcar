@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, NavLink, Link } from "react-router-dom";
 import OurServices from "../../OurServices/OurServices";
 
 const SecondNavBar = () => {
-  const [data, setData] = useState([]);
   const [active, setActive] = useState(0);
   return (
     <nav className="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
@@ -26,44 +25,33 @@ const SecondNavBar = () => {
       </button>
       <div className="collapse navbar-collapse" id="navbarCollapse">
         <div className="navbar-nav ms-auto p-4 p-lg-0">
-          <Link to="/" className="nav-item nav-link active">
+          {/* <ul>
+            <li> */}
+          <NavLink to="/" className="nav-item nav-link ">
             Home
-          </Link>
-          <Link to="/about" className="nav-item nav-link ">
+          </NavLink>
+          {/* </li>
+            <li> */}
+          <NavLink to="/about" className="nav-item nav-link ">
             About
-          </Link>
-          <Link to="/services" className="nav-item nav-link">
+          </NavLink>
+          {/* </li>
+            <li> */}
+          <NavLink to="/services" className="nav-item nav-link">
             services
-          </Link>
+          </NavLink>
+          {/* </li> */}
+          {/* </ul> */}
 
-          <div className="nav-item dropdown">
-            <a
-              href="#"
-              className="nav-link dropdown-toggle"
-              data-bs-toggle="dropdown"
-            >
-              Pages
-            </a>
-            <div className="dropdown-menu fade-up m-0">
-              <a href="booking.html" className="dropdown-item">
-                Booking
-              </a>
-              <a href="team.html" className="dropdown-item">
-                Technicians
-              </a>
-              <a href="testimonial.html" className="dropdown-item">
-                Testimonial
-              </a>
-              <a href="404.html" className="dropdown-item">
-                404 Page
-              </a>
-            </div>
-          </div>
-          <Link to="/contact" className="nav-item nav-link">
+          <NavLink to="/contact" className="nav-item nav-link">
             Contact
-          </Link>
+          </NavLink>
         </div>
-        <a href="" className="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
+        <a
+          target="_blank"
+          href="https://www.facebook.com/"
+          className="btn btn-primary py-4 px-lg-5 d-none d-lg-block"
+        >
           Get A Quote<i className="fa fa-arrow-right ms-3"></i>
         </a>
       </div>
