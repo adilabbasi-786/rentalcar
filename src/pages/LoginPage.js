@@ -4,9 +4,26 @@ import "./Login.css";
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const handlelogin = async () => {
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        identifier: email,
+        password: password,
+      }),
+    };
+    const response = await fetch(
+      "http://localhost:1337/api/auth/local",
+      requestOptions
+    );
+    const responseData = await response.json();
+    setEmail("");
+    setPassword("");
+  };
   return (
     <div className="Auth-form-container">
-      <form className="Auth-form">
+      <div className="Auth-form">
         <div className="Auth-form-content">
           <h3 className="Auth-form-title">Sign In</h3>
           <div className="form-group mt-3">
@@ -29,7 +46,7 @@ const LoginPage = () => {
             />
           </div>
           <div className="d-grid gap-2 mt-3">
-            <button type="submit" className="btn btn-primary">
+            <button onClick={handlelogin} className="btn btn-primary">
               Submit
             </button>
           </div>
@@ -37,7 +54,7 @@ const LoginPage = () => {
             Forgot <a href="#">password?</a>
           </p>
         </div>
-      </form>
+      </div>
     </div>
   );
 };

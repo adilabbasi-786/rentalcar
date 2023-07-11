@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import Newsletter from "../Newsletter/Newsletter";
+import { WebContext } from "../../context/WebContext";
 
 const Footer = () => {
+  const Webinfo = useContext(WebContext);
   return (
     <>
       <div
@@ -13,8 +15,8 @@ const Footer = () => {
             <div class="col-lg-3 col-md-6">
               <h4 class="text-light mb-4">Address</h4>
               <p class="mb-2">
-                <i class="fa fa-map-marker-alt me-3"></i>123 Street, New York,
-                USA
+                <i class="fa fa-map-marker-alt me-3"></i>
+                {Webinfo.data.attributes.address}
               </p>
               <p class="mb-2">
                 <i class="fa fa-phone-alt me-3"></i>+012 345 67890

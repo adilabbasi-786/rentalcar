@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
+import { WebContext } from "../../../context/WebContext";
 
 const TopNavBar = () => {
+  const Webinfo = useContext(WebContext);
+
   return (
     <div className="container-fluid bg-light p-0">
       <div className="row gx-0 d-none d-lg-flex">
         <div className="col-lg-7 px-5 text-start">
           <div className="h-100 d-inline-flex align-items-center py-3 me-4">
             <small className="fa fa-map-marker-alt text-primary me-2"></small>
-            <small>123 Street, New York, USA</small>
+            <small>{Webinfo.data.attributes.address}</small>
           </div>
           <div className="h-100 d-inline-flex align-items-center py-3">
             <small className="far fa-clock text-primary me-2"></small>

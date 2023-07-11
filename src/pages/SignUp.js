@@ -5,19 +5,34 @@ const SignUp = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const clickHandle = () => {
-    // let data = {
-    //   data: {
-    //     firstName: firstName,
-    //     lastName: lastName,
-    //     email: email,
-    //     password: password,
-    //     confirmPassword: confirmPassword,
-    //   },
-    // };
+  const clickHandle = async () => {
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        password: password,
+        confirmPassword: confirmPassword,
+        username: username,
+      }),
+    };
+    const response = await fetch(
+      "http://localhost:1337/api/auth/local/register",
+      requestOptions
+    );
+    const responseData = await response.json();
+    console.log(responseData);
+    setFirstName("");
+    setEmail("");
+    setPassword("");
+    setConfirmPassword("");
+    setLastName("");
+    setUsername("");
   };
-  console.log(clickHandle);
   return (
     <div>
       <div className="Auth-form-container">
@@ -39,6 +54,16 @@ const SignUp = () => {
               <input
                 onChange={(e) => setLastName(e.target.value)}
                 value={lastName}
+                type="last name"
+                className="form-control mt-1"
+                placeholder="Enter your Last Name"
+              />
+            </div>
+            <div className="form-group mt-3">
+              <label>user Name</label>
+              <input
+                onChange={(e) => setUsername(e.target.value)}
+                value={username}
                 type="last name"
                 className="form-control mt-1"
                 placeholder="Enter your Last Name"
