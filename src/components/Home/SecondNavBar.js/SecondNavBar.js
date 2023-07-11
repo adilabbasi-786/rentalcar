@@ -46,6 +46,12 @@ const SecondNavBar = () => {
           <NavLink to="/contact" className="nav-item nav-link">
             Contact
           </NavLink>
+          <NavLink to="/login" className="nav-item nav-link">
+            Login
+          </NavLink>
+          <NavLink to="/signup" className="nav-item nav-link">
+            signup
+          </NavLink>
         </div>
         <a
           target="_blank"

@@ -8,6 +8,8 @@ import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import OurServices from "./components/OurServices/OurServices";
+import Login from "./pages/LoginPage";
+import Signup from "./pages/SignUp";
 function App() {
   return (
     <>
@@ -19,6 +21,9 @@ function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/services" element={<OurServices />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
         {/* <Carousel />  */}
