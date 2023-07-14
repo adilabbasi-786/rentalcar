@@ -1,6 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
 const SignUp = () => {
+  const navigate = useNavigate();
+  const auth = useContext(AuthContext);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -32,6 +36,8 @@ const SignUp = () => {
     setConfirmPassword("");
     setLastName("");
     setUsername("");
+    auth.setToken(responseData.jwt);
+    navigate("/");
   };
   return (
     <div>

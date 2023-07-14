@@ -5,12 +5,15 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import Webinfo from "./context/WebContext";
+import Auth from "./context/AuthContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   // <React.StrictMode>
   <Webinfo>
-    <App />
+    <Auth>
+      <App />
+    </Auth>
   </Webinfo>
   // </React.StrictMode>
 );

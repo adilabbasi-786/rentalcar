@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Login.css";
+import { AuthContext } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
+  const navigate = useNavigate();
+  const auth = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const handlelogin = async () => {
@@ -20,7 +24,11 @@ const LoginPage = () => {
     const responseData = await response.json();
     setEmail("");
     setPassword("");
+    auth.setToken(responseData.jwt);
+    localStorage.setItem("token", responseData.jwt);
+    navigate("/");
   };
+
   return (
     <div className="Auth-form-container">
       <div className="Auth-form">

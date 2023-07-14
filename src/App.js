@@ -10,6 +10,7 @@ import NotFoundPage from "./pages/NotFoundPage";
 import OurServices from "./components/OurServices/OurServices";
 import Login from "./pages/LoginPage";
 import Signup from "./pages/SignUp";
+import Mybooking from "./pages/Mybooking";
 function App() {
   return (
     <>
@@ -23,6 +24,7 @@ function App() {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/mybooking" element={<Mybooking />} />
 
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
