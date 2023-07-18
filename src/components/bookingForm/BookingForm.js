@@ -1,16 +1,27 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 const BookingForm = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [date, setDate] = useState("");
   const [req, setReq] = useState("");
+  const [service, setService] = useState("");
+  const auth = useContext(AuthContext);
   const clickHandle = async () => {
     const requestOptions = {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${auth.token}`,
+      },
       body: JSON.stringify({
-        data: { email: email, name: name, date: date, req: req },
+        data: {
+          name: name,
+          date: date,
+          special_request: req,
+          service_type: service,
+        },
       }),
     };
     const response = await fetch(
@@ -19,22 +30,15 @@ const BookingForm = () => {
     );
     const data = await response.json();
     setName("");
-    setEmail("");
+    setService("");
     setDate("");
     setReq("");
-    let reqData = {
-      datas: {
-        name: name,
-        email: email,
-        date: date,
-        req: req,
-      },
-    };
+    alert("booking created succefully");
   };
   return (
     <>
       <div class="row g-3">
-        <div class="col-12 col-sm-6">
+        <div class="col-12 col-sm-12">
           <input
             onChange={(e) => setName(e.target.value)}
             value={name}
@@ -44,22 +48,18 @@ const BookingForm = () => {
             style={{ height: "55px" }}
           />
         </div>
+
         <div class="col-12 col-sm-6">
-          <input
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
-            type="email"
-            class="form-control border-0"
-            placeholder="Your Email"
+          <select
+            onChange={(e) => setService(e.target.value)}
+            value={service}
+            class="form-select border-0"
             style={{ height: "55px" }}
-          />
-        </div>
-        <div class="col-12 col-sm-6">
-          <select class="form-select border-0" style={{ height: "55px" }}>
+          >
             <option selected>Select A Service</option>
-            <option value="1">Service 1</option>
-            <option value="2">Service 2</option>
-            <option value="3">Service 3</option>
+            <option value="Service 1">Service 1</option>
+            <option value="Service 2">Service 2</option>
+            <option value="Service 3">Service 3</option>
           </select>
         </div>
         <div class="col-12 col-sm-6">

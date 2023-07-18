@@ -78,13 +78,15 @@ const SecondNavBar = () => {
             </>
           )}
         </div>
-        <a
-          target="_blank"
-          href="https://www.facebook.com/"
-          className="btn btn-primary py-4 px-lg-5 d-none d-lg-block"
-        >
-          Get A Quote<i className="fa fa-arrow-right ms-3"></i>
-        </a>
+
+        {auth.token !== null && (
+          <a
+            href="#booking-container"
+            className="btn btn-primary py-4 px-lg-5 d-none d-lg-block"
+          >
+            book now<i className="fa fa-arrow-right ms-3"></i>
+          </a>
+        )}
       </div>
     </nav>
   );
