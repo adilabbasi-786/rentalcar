@@ -11,6 +11,7 @@ import OurServices from "./components/OurServices/OurServices";
 import Login from "./pages/LoginPage";
 import Signup from "./pages/SignUp";
 import Mybooking from "./pages/Mybooking";
+import Booking from "./components/Booking/Booking";
 function App() {
   return (
     <>
@@ -25,6 +26,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/mybooking" element={<Mybooking />} />
+          <Route path="/booking" element={<Booking />} />
 
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

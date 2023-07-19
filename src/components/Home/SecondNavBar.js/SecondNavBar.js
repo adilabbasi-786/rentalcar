@@ -80,12 +80,14 @@ const SecondNavBar = () => {
         </div>
 
         {auth.token !== null && (
-          <a
-            href="#booking-container"
-            className="btn btn-primary py-4 px-lg-5 d-none d-lg-block"
-          >
-            book now<i className="fa fa-arrow-right ms-3"></i>
-          </a>
+          <NavLink to="/booking">
+            <a
+              href="#booking-container"
+              className="btn btn-primary py-4 px-lg-5 d-none d-lg-block"
+            >
+              book now<i className="fa fa-arrow-right ms-3"></i>
+            </a>
+          </NavLink>
         )}
       </div>
     </nav>

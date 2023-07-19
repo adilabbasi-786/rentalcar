@@ -22,11 +22,16 @@ const LoginPage = () => {
       requestOptions
     );
     const responseData = await response.json();
-    setEmail("");
-    setPassword("");
-    auth.setToken(responseData.jwt);
-    localStorage.setItem("token", responseData.jwt);
-    navigate("/");
+
+    if (responseData.error) {
+      alert("invalid user and password");
+    } else {
+      setEmail("");
+      setPassword("");
+      auth.setToken(responseData.jwt);
+      localStorage.setItem("token", responseData.jwt);
+      navigate("/");
+    }
   };
 
   return (

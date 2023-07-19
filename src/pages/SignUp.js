@@ -12,6 +12,11 @@ const SignUp = () => {
   const [username, setUsername] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const clickHandle = async () => {
+    if (confirmPassword !== password) {
+      alert("password and confirm password should be same");
+      return;
+    }
+
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -29,15 +34,18 @@ const SignUp = () => {
       requestOptions
     );
     const responseData = await response.json();
-    console.log(responseData);
-    setFirstName("");
-    setEmail("");
-    setPassword("");
-    setConfirmPassword("");
-    setLastName("");
-    setUsername("");
-    auth.setToken(responseData.jwt);
-    navigate("/");
+    if (responseData.error) {
+      alert("type another usename or password or email");
+    } else {
+      setFirstName("");
+      setEmail("");
+      setPassword("");
+      setConfirmPassword("");
+      setLastName("");
+      setUsername("");
+      auth.setToken(responseData.jwt);
+      navigate("/");
+    }
   };
   return (
     <div>
