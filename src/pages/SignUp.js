@@ -30,7 +30,7 @@ const SignUp = () => {
       }),
     };
     const response = await fetch(
-      "http://localhost:1337/api/auth/local/register",
+      `${URL}/api/auth/local/register`,
       requestOptions
     );
     const responseData = await response.json();

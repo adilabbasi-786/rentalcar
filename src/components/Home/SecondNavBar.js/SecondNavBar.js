@@ -11,8 +11,9 @@ const SecondNavBar = () => {
     auth.setToken(null);
     localStorage.removeItem("token");
   };
+  const [show, setShow] = useState(false);
   return (
-    <nav className="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+    <nav className="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0 ">
       <Link
         to="/"
         className="navbar-brand d-flex align-items-center px-4 px-lg-5"
@@ -24,13 +25,18 @@ const SecondNavBar = () => {
 
       <button
         type="button"
-        className="navbar-toggler me-4"
+        className="navbar-toggler me-4 collapsed"
         data-bs-toggle="collapse"
         data-bs-target="#navbarCollapse"
+        onClick={() => setShow(!show)}
       >
         <span className="navbar-toggler-icon"></span>
       </button>
-      <div className="collapse navbar-collapse" id="navbarCollapse">
+      <div
+        className="collapse navbar-collapse "
+        id="navbarCollapse"
+        style={show ? { display: "block" } : { display: "none" }}
+      >
         <div className="navbar-nav ms-auto p-4 p-lg-0">
           {/* <ul>
             <li> */}
