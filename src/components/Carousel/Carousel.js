@@ -29,7 +29,7 @@ const Carousel = () => {
               >
                 <img
                   className="w-100"
-                  src={`${URL}&&${item?.attributes?.background?.data?.attributes?.url}`}
+                  src={`${URL}${item?.attributes?.background?.data?.attributes?.url}`}
                   alt="Image"
                 />
                 <div className="carousel-caption d-flex align-items-center">
