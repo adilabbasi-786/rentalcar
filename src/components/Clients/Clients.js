@@ -119,7 +119,7 @@ const Clients = () => {
               <div className="testimonial-item text-center" key={item.id}>
                 <img
                   className="bg-light rounded-circle p-2 mx-auto mb-3"
-                  src={`http://localhost:1337${item.attributes.img.data.attributes.url}`}
+                  src={`${URL}${item.attributes.img.data.attributes.url}`}
                   style={{ width: "80px", height: "80px" }}
                 />
                 <h5 className="mb-0">{item.attributes.name}</h5>

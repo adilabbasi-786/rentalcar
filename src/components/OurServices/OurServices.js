@@ -55,7 +55,7 @@ const OurServices = () => {
                         <div className="position-relative h-100">
                           <img
                             className="position-absolute img-fluid w-100 h-100"
-                            src={`http://localhost:1337${item.attributes.img.data.attributes.url}`}
+                            src={`${URL}${item.attributes.img.data.attributes.url}`}
                             style={{ objectFit: "cover" }}
                             alt=""
                           />

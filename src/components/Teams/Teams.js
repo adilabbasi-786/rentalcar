@@ -32,7 +32,7 @@ const Teams = () => {
                   <div className="position-relative overflow-hidden">
                     <img
                       className="img-fluid"
-                      src={`http://localhost:1337${item.attributes.img.data.attributes.url}`}
+                      src={`${URL}${item.attributes.img.data.attributes.url}`}
                       alt=""
                     />
                     <div className="team-overlay position-absolute start-0 top-0 w-100 h-100">
