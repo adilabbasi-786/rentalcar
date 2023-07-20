@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
+import { URL } from "../utills";
 import { AuthContext } from "../context/AuthContext";
 const modal = document.getElementById("id01");
 
