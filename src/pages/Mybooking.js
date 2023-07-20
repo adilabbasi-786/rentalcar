@@ -6,7 +6,7 @@ function Mybooking() {
   const auth = useContext(AuthContext);
   const [data, setData] = useState([]);
   const getData = async () => {
-    let req = await fetch("http://localhost:1337/api/bookings", {
+    let req = await fetch(`${URL}/api/bookings`, {
       headers: { Authorization: `Bearer ${auth.token}` },
     });
     let res = await req.json();
@@ -18,7 +18,7 @@ function Mybooking() {
   }, []);
 
   const sayHello = async (id) => {
-    await fetch(`http://localhost:1337/api/bookings/${id}`, {
+    await fetch(`${URL}/api/bookings/${id}`, {
       method: "DELETE",
       headers: { Authorization: `Bearer ${auth.token}` },
     });

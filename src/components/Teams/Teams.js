@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { URL } from "../../utills";
 
 const Teams = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
     const getData = async () => {
-      let req = await fetch("http://localhost:1337/api/teams?populate=*");
+      let req = await fetch(`${URL}/api/teams?populate=*`);
       let res = await req.json();
       setData(res.data);
     };

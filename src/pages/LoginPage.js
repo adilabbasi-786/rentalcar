@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import "./Login.css";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { URL } from "../utills";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -17,10 +18,7 @@ const LoginPage = () => {
         password: password,
       }),
     };
-    const response = await fetch(
-      "http://localhost:1337/api/auth/local",
-      requestOptions
-    );
+    const response = await fetch(`${URL}/api/auth/local`, requestOptions);
     const responseData = await response.json();
 
     if (responseData.error) {

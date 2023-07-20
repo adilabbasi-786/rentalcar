@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import { URL } from "../../utills";
 
 const BookingForm = () => {
   const [name, setName] = useState("");
@@ -24,10 +25,7 @@ const BookingForm = () => {
         },
       }),
     };
-    const response = await fetch(
-      "http://localhost:1337/api/bookings",
-      requestOptions
-    );
+    const response = await fetch(`${URL}/api/bookings`, requestOptions);
     const data = await response.json();
     setName("");
     setService("");

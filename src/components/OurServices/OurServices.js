@@ -1,16 +1,11 @@
 import React, { useEffect, useState } from "react";
-import service1 from "../../img/service-1.jpg";
-import service2 from "../../img/service-2.jpg";
-import service3 from "../../img/service-3.jpg";
-import service4 from "../../img/service-4.jpg";
+import { URL } from "../../utills";
 const OurServices = () => {
   const [active, setActive] = useState(0);
   const [data, setDate] = useState([]);
   useEffect(() => {
     const getData = async () => {
-      let request = await fetch(
-        "http://localhost:1337/api/our-services?populate=*"
-      );
+      let request = await fetch(`${URL}/api/our-services?populate=*`);
       let res = await request.json();
       setDate(res.data);
     };

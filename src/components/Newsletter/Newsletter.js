@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { URL } from "../../utills";
 
 function Newsletter() {
   const [email, setEmail] = useState("");
@@ -10,10 +11,7 @@ function Newsletter() {
         data: { email: email },
       }),
     };
-    const response = await fetch(
-      "http://localhost:1337/api/newsletters",
-      requestOptions
-    );
+    const response = await fetch(`${URL}/api/newsletters`, requestOptions);
     const data = await response.json();
     setEmail("");
   };

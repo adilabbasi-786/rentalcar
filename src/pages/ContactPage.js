@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Crousel1 from "../img/carousel-bg-1.jpg";
+import { URL } from "../utills";
 
 const ContactPage = () => {
   const [name, setName] = useState("");
@@ -14,10 +15,7 @@ const ContactPage = () => {
         data: { email: email, name: name, subject: subject, message: message },
       }),
     };
-    const response = await fetch(
-      "http://localhost:1337/api/contacts",
-      requestOptions
-    );
+    const response = await fetch(`${URL}/api/contacts`, requestOptions);
 
     const data = await response.json();
     setName("");

@@ -1,21 +1,18 @@
 import React, { useEffect, useState } from "react";
-import img1 from "../../img/carousel-bg-1.jpg";
-import img2 from "../../img/carousel-1.png";
-import img3 from "../../img/carousel-bg-2.jpg";
-import img4 from "../../img/carousel-2.png";
-
+import { URL } from "../../utills";
 const Carousel = () => {
   const [data, setData] = useState([]);
-  useEffect(()=>{
-    const getData=async()=>{
-      let request = await fetch("http://localhost:1337/api/crousels?populate=background,frontEnd");
+  useEffect(() => {
+    const getData = async () => {
+      let request = await fetch(
+        `${URL}/api/crousels?populate=background,frontEnd`
+      );
       let res = await request.json();
-     setData(res.data)
-      
-    }
-    getData()
-  },[])
-  const[activeIndex, setActiveIndex]=useState(0)
+      setData(res.data);
+    };
+    getData();
+  }, []);
+  const [activeIndex, setActiveIndex] = useState(0);
   return (
     <>
       <div className="container-fluid p-0 mb-5">
@@ -26,8 +23,15 @@ const Carousel = () => {
         >
           <div className="carousel-inner">
             {data.map((item, i) => (
-              <div className={`carousel-item ${i === activeIndex ? "active" : ""}`} key={item.id}>
-                <img className="w-100"  src={`http://localhost:1337${item?.attributes?.background?.data?.attributes?.url}`} alt="Image" />
+              <div
+                className={`carousel-item ${i === activeIndex ? "active" : ""}`}
+                key={item.id}
+              >
+                <img
+                  className="w-100"
+                  src={`http://localhost:1337${item?.attributes?.background?.data?.attributes?.url}`}
+                  alt="Image"
+                />
                 <div className="carousel-caption d-flex align-items-center">
                   <div className="container">
                     <div className="row align-items-center justify-content-center justify-content-lg-start">
@@ -47,16 +51,24 @@ const Carousel = () => {
                         </a>
                       </div>
                       <div className="col-lg-5 d-none d-lg-flex animated zoomIn">
-                        <img className="img-fluid" src={`http://localhost:1337${item?.attributes?.frontEnd?.data?.attributes?.url}`} alt="" />
+                        <img
+                          className="img-fluid"
+                          src={`http://localhost:1337${item?.attributes?.frontEnd?.data?.attributes?.url}`}
+                          alt=""
+                        />
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             ))}
-            
           </div>
-          <button onClick={()=>(setActiveIndex(activeIndex===0?data.length-1: activeIndex-1))}
+          <button
+            onClick={() =>
+              setActiveIndex(
+                activeIndex === 0 ? data.length - 1 : activeIndex - 1
+              )
+            }
             className="carousel-control-prev"
             type="button"
             data-bs-target="#header-carousel"
@@ -68,7 +80,12 @@ const Carousel = () => {
             ></span>
             <span className="visually-hidden">Previous</span>
           </button>
-          <button onClick={()=>setActiveIndex(activeIndex>=data.length-1?0: activeIndex+1)}
+          <button
+            onClick={() =>
+              setActiveIndex(
+                activeIndex >= data.length - 1 ? 0 : activeIndex + 1
+              )
+            }
             className="carousel-control-next"
             type="button"
             data-bs-target="#header-carousel"
